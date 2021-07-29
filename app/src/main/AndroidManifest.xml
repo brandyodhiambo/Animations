@@ -10,10 +10,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Animations">
         <activity android:name=".SubmissionActivity"></activity>
-        <activity android:name=".SplashActivity" />
-        <activity android:name=".Submission" />
-        <activity android:name=".Spalsh" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity" />
+        <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -49,16 +49,18 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tablayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/black"
             app:tabMode="fixed"
+            android:background="@color/black"
             app:tabSelectedTextColor="@color/white"
             app:tabTextColor="#aaa" />
 
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.viewpager.widget.ViewPager
+        android:id="@+id/tabsViewPager"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
