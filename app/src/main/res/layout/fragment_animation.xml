@@ -8,6 +8,7 @@
 
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/animationRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -18,4 +19,25 @@
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         android:orientation="vertical"
         tools:listitem="@layout/animations_row"/>
+
+    <ProgressBar
+        android:id="@+id/animationsProgressbar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/animationRecyclerView"
+        app:layout_constraintEnd_toEndOf="@+id/animationRecyclerView"
+        app:layout_constraintStart_toStartOf="@+id/animationRecyclerView"
+        app:layout_constraintTop_toTopOf="@+id/animationRecyclerView" />
+
+    <TextView
+        android:id="@+id/failedTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Failed"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/animationRecyclerView"
+        app:layout_constraintStart_toStartOf="@+id/animationRecyclerView"
+        app:layout_constraintTop_toTopOf="@+id/animationRecyclerView" />
 </androidx.constraintlayout.widget.ConstraintLayout>
