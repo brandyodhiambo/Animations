@@ -24,7 +24,7 @@ class AnimationFragment : Fragment() {
         binding= FragmentAnimationBinding.inflate(inflater,container,false)
         val view=binding.root
 
-        AnimationsApi.apiService.getAnimations().enqueue(object : Callback<AnimationModel>{
+        AnimationsApi.apiService1.getAnimations().enqueue(object : Callback<AnimationModel>{
             override fun onFailure(call: Call<AnimationModel>, t: Throwable) {
                 Toast.makeText(activity?.applicationContext, "Failed", Toast.LENGTH_SHORT).show()
                 binding.animationsProgressbar.isVisible=false
