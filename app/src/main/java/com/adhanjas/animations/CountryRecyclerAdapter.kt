@@ -15,7 +15,7 @@ class CountryRecyclerAdapter :ListAdapter<CountryModel.CountryModelItem,CountryR
             binding.countryTitle.text=item?.name
             binding.countryDescription.text=item?.capital
             Glide.with(binding.countryImage)
-                    .load(item?.flag)
+                    .load("https://cdn.britannica.com/15/15-004-B5D6BF80/Flag-Kenya.jpg")
                     .into(binding.countryImage)
 
         }

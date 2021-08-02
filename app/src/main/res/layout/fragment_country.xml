@@ -20,4 +20,25 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:listitem="@layout/country_row"
         />
+
+    <ProgressBar
+        android:id="@+id/countryprogressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/countryRecyclerView"
+        app:layout_constraintEnd_toEndOf="@+id/countryRecyclerView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/countryRecyclerView" />
+
+    <TextView
+        android:id="@+id/countrytextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Failed"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/countryRecyclerView"
+        app:layout_constraintStart_toStartOf="@+id/countryRecyclerView"
+        app:layout_constraintTop_toTopOf="@+id/countryRecyclerView"
+        android:visibility="gone"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

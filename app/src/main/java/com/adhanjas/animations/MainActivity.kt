@@ -1,5 +1,6 @@
 package com.adhanjas.animations
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.adhanjas.animations.databinding.ActivityMainBinding
@@ -14,6 +15,9 @@ class MainActivity : AppCompatActivity() {
 
         setContentView(binding.root)
         setTabs()
+        binding.submitButton.setOnClickListener {
+            startActivity(Intent(this,SubmissionActivity::class.java))
+        }
 
     }
     private fun setTabs(){
