@@ -15,7 +15,7 @@ interface ApiService {
     @GET("all")
     fun getCountries() :Call<CountryModel>
 
-    @POST("1FAIpQLSfeHIGfXwP9e-F_9EXZre8baBamyp4O2QLxhv3KLHSZY7AlQQ/viewform")
+    @POST("1FAIpQLSfeHIGfXwP9e-F_9EXZre8baBamyp4O2QLxhv3KLHSZY7AlQQ/formResponse")
     @FormUrlEncoded
     fun submitProject(
             @Field("entry.1383925249")firstName: String,
@@ -39,11 +39,11 @@ object AnimationsApi{
             .baseUrl(BASE_URL2)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
-    private val retrofit3=Retrofit.Builder()
-            .baseUrl(BASE_URL3)
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
 
+    private val retrofit3=Retrofit.Builder()
+        .baseUrl(BASE_URL3)
+        .addConverterFactory(GsonConverterFactory.create())
+        .build()
 
     val apiService1 by lazy {
         retrofit.create(ApiService::class.java)
@@ -51,5 +51,9 @@ object AnimationsApi{
 
     val apiService2 by lazy {
         retrofit2.create(ApiService::class.java)
+    }
+
+    val apiService3 by lazy {
+        retrofit3.create(ApiService::class.java)
     }
 }
