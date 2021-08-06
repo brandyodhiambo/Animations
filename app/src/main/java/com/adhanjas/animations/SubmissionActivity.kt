@@ -17,22 +17,35 @@ class SubmissionActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySubmissionBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding= ActivitySubmissionBinding.inflate(layoutInflater)
+        binding = ActivitySubmissionBinding.inflate(layoutInflater)
         setContentView(binding.root)
         binding.submit.setOnClickListener {
-            showConfirmationDialog()
+            if (binding.firstName.text.toString().isEmpty()) {
+                binding.firstName.setError("Required")
+            } else if (binding.lastName.text.toString().isEmpty()) {
+                binding.lastName.setError("required")
+            } else if (binding.email.text.toString().isEmpty()) {
+                binding.email.setError("required")
+            } else if (binding.gitlink.text.toString().isEmpty()) {
+                binding.gitlink.setError("required")
+            } else {
+                showConfirmationDialog()
+            }
+
         }
     }
-    private fun showConfirmationDialog(){
-        val viewGroup=findViewById<ViewGroup>(android.R.id.content)
-        val dialogView: View = LayoutInflater.from(this).inflate(R.layout.fragment_confirmation_dialog,viewGroup,false)
 
-        val agree:Button=dialogView.findViewById(R.id.agree)
-        val close:ImageView=dialogView.findViewById(R.id.cancel)
+    private fun showConfirmationDialog() {
+        val viewGroup = findViewById<ViewGroup>(android.R.id.content)
+        val dialogView: View = LayoutInflater.from(this)
+            .inflate(R.layout.fragment_confirmation_dialog, viewGroup, false)
 
-        val builder=AlertDialog.Builder(this)
+        val agree: Button = dialogView.findViewById(R.id.agree)
+        val close: ImageView = dialogView.findViewById(R.id.cancel)
+
+        val builder = AlertDialog.Builder(this)
         builder.setView(dialogView)
-        val alertDialog=builder.create()
+        val alertDialog = builder.create()
         alertDialog.show()
 
         close.setOnClickListener {
@@ -44,22 +57,22 @@ class SubmissionActivity : AppCompatActivity() {
                 binding.lastName.text.toString(),
                 binding.email.text.toString(),
                 binding.gitlink.text.toString())
-
-            alertDialog.dismiss()
+            }
+            alertDialog . dismiss ()
         }
 
+    private fun sendData(firstName: String, lastName: String, email: String, link: String) {
+        AnimationsApi.apiService3.submitProject(firstName, lastName, email, link)
+            .enqueue(object : Callback<Void> {
+                override fun onResponse(call: Call<Void>, response: Response<Void>) {
+                    SuccessFragment().show(supportFragmentManager, "Success")
+                }
 
-    }
-    private fun sendData(firstName:String,lastName:String,email:String,link:String){
-        AnimationsApi.apiService3.submitProject(firstName,lastName,email,link).enqueue(object :Callback<Void>{
-            override fun onResponse(call: Call<Void>, response: Response<Void>) {
-                SuccessFragment().show(supportFragmentManager,"Success")
-            }
+                override fun onFailure(call: Call<Void>, t: Throwable) {
+                    FaliureFragment().show(supportFragmentManager, "failed")
+                }
 
-            override fun onFailure(call: Call<Void>, t: Throwable) {
-                FaliureFragment().show(supportFragmentManager,"failed")
-            }
-
-        })
+            })
     }
 }
+
